@@ -1,11 +1,7 @@
 # Flink Connector Redis
 
----
-
 ![](https://img.shields.io/badge/license-Apache-blue)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=yagagagaga_flink-connector-redis&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=yagagagaga_flink-connector-redis)
-
----
 
 The Redis connector allows for reading data from and writing data into Redis.
 

@@ -17,6 +17,8 @@
 
 	<properties>
 		<jedis.version>3.5.2</jedis.version>
+		<sonar.organization>zhangminkefromflydish</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
 	<dependencies>

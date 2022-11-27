@@ -144,7 +144,8 @@
 									<goal>shade</goal>
 								</goals>
 								<configuration>
-									<finalName>flink-sql-connector-redis_${scala.binary.version}-${project.version}</finalName>
+									<finalName>flink-sql-connector-redis_${scala.binary.version}-${project.version}
+									</finalName>
 									<shadeTestJar>false</shadeTestJar>
 									<artifactSet>
 										<includes>
@@ -175,6 +176,11 @@
 		</profile>
 		<profile>
 			<id>coverage</id>
+			<properties>
+				<sonar.coverage.jacoco.xmlReportPaths>
+					${project.build.directory}/jacoco/jacoco.xml
+				</sonar.coverage.jacoco.xmlReportPaths>
+			</properties>
 			<build>
 				<plugins>
 					<plugin>
@@ -194,12 +200,26 @@
 									<goal>report</goal>
 								</goals>
 								<configuration>
+									<propertyName>jacoco.agent.argLine</propertyName>
+									<outputDirectory>${project.build.directory}/jacoco</outputDirectory>
+									<title>jacoco</title>
 									<formats>
 										<format>XML</format>
 									</formats>
+									<includes>
+										<include>**/**/*</include>
+									</includes>
 								</configuration>
 							</execution>
 						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<!--suppress UnresolvedMavenProperty-->
+							<argLine>-Dfile.encoding=UTF-8 ${argLine}</argLine>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>
